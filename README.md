@@ -76,5 +76,5 @@ The extension requires the following permissions:
 ## License
 
 This project is open source and available under the MIT License.
-# chrome-extension-linkarchive
+
 # chrome-extension-linkarchive
