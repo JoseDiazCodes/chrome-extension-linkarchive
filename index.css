@@ -1,5 +1,5 @@
 body {
-	margin: 0;
+	margin-top: 10px;
 	padding: 10px;
 	font-family: Arial, Helvetica, sans-serif;
 	min-width: 400px;
@@ -38,8 +38,9 @@ ul {
 
 li {
 	margin-top: 5px;
+	color: white;
 }
 
 a {
-	color: #090909;
+	color: white;
 }
