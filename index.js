@@ -47,12 +47,25 @@ const handleDelete = () => {
 deleteBtn.addEventListener("dblclick", handleDelete)
 
 const handleInput = () => {
-	if (!isValidURL(inputEl.value)) {
+	let inputValue = inputEl.value.trim() // Trim whitespace
+
+	if (!isValidURL(inputValue)) {
 		alert("Please enter a valid URL")
 		return
 	}
 
-	myLeads.push(inputEl.value)
+	// Handle different URL formats
+	if (!inputValue.startsWith("http://") && !inputValue.startsWith("https://")) {
+		// If it starts with www., add https://
+		if (inputValue.startsWith("www.")) {
+			inputValue = "https://" + inputValue
+		} else {
+			// If it doesn't start with www., add https://www.
+			inputValue = "https://www." + inputValue
+		}
+	}
+
+	myLeads.push(inputValue)
 	inputEl.value = ""
 
 	localStorage.setItem("myLeads", JSON.stringify(myLeads))
@@ -67,22 +80,3 @@ inputEl.addEventListener("keydown", (event) => {
 })
 
 inputBtn.addEventListener("click", handleInput)
-
-// inputBtn.addEventListener("click", function () {
-// 	if (!isValidURL(inputEl.value)) {
-// 		alert("Please enter a valid URL")
-// 		return
-// 	}
-
-// 	myLeads.push(inputEl.value)
-// 	inputEl.value = ""
-
-// 	localStorage.setItem("myLeads", JSON.stringify(myLeads))
-// 	render(myLeads)
-// })
-
-// deleteBtn.addEventListener("dblclick", function () {
-// 	localStorage.clear()
-// 	myLeads = []
-// 	render(myLeads)
-// })
